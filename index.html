@@ -11,7 +11,35 @@ body {
   font-family: Arial;
   background: #f5f5f5;
 }
+html {
+  scroll-behavior: smooth;
+}
 
+/* Button style */
+button {
+  background: #0d6efd;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #0056b3;
+  transform: scale(1.1);
+  transition: 0.3s;
+}
+
+/* Service box animation */
+.service-box {
+  transition: 0.3s;
+}
+
+.service-box:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 20px gray;
+}
 header {
   background: #0d6efd;
   color: white;

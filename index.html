@@ -85,6 +85,26 @@ footer {
   text-align: center;
   padding: 10px;
 }
+  /* Grid layout for services */
+.services {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 15px;
+  padding: 20px;
+}
+/* Square service boxes */
+.service-box {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px gray;
+  aspect-ratio: 1/1; /* square */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: bold;
+  padding: 10px;
+}
 </style>
 </head>
 

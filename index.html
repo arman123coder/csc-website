@@ -1,196 +1,169 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Arman CSC Center</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 body {
-  margin: 0;
+  margin:0;
   font-family: Arial;
-  background: #f5f5f5;
-}
-html {
-  scroll-behavior: smooth;
+  background:#f5f7fa;
 }
 
-/* Button style */
-button {
-  background: #0d6efd;
-  color: white;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
+/* NAVBAR */
+nav {
+  background:#0d6efd;
+  padding:15px;
+  text-align:center;
+}
+nav a {
+  color:white;
+  margin:10px;
+  text-decoration:none;
+  font-weight:bold;
 }
 
-button:hover {
-  background: #0056b3;
-  transform: scale(1.1);
-  transition: 0.3s;
+/* SEARCH */
+#search {
+  width:80%;
+  padding:10px;
+  margin:20px;
+  border-radius:8px;
+  border:1px solid #ccc;
 }
 
-/* Service box animation */
+/* GRID */
+.services {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:15px;
+  padding:20px;
+}
+
+/* BOX */
 .service-box {
-  transition: 0.3s;
+  background:linear-gradient(135deg,#e3f2fd,#ffffff);
+  border-radius:12px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.2);
+  aspect-ratio:1/1;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  font-weight:bold;
+  transition:0.3s;
 }
 
 .service-box:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 20px gray;
-}
-header {
-  background: #0d6efd;
-  color: white;
-  padding: 15px;
-  text-align: center;
+  transform:scale(1.08);
+  background:linear-gradient(135deg,#0d6efd,#00c6ff);
+  color:white;
 }
 
-nav {
-  background: #333;
-  padding: 10px;
-  text-align: center;
+/* CONTACT + FORM */
+section, form {
+  text-align:center;
 }
 
-nav a {
-  color: white;
-  margin: 10px;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-.hero {
-  padding: 50px;
-  text-align: center;
-  background: linear-gradient(to right, #0d6efd, #00c6ff);
-  color: white;
-}
-
-.services {
-  padding: 20px;
-}
-
-.service-box {
-  background: white;
-  padding: 15px;
-  margin: 10px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px gray;
+button {
+  padding:10px 15px;
+  background:#0d6efd;
+  color:white;
+  border:none;
+  border-radius:6px;
 }
 
 footer {
-  background: #222;
-  color: white;
-  text-align: center;
-  padding: 10px;
-}
-  /* Grid layout for services */
-.services {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 15px;
-  padding: 20px;
-}
-  
-  .service-box:hover {
-  transform: scale(1.05);
-  transition: 0.3s;
-}
-  
-/* Square service boxes */
-.service-box {
-  background: white;
-  border-radius: 10px;
-  box-shadow: 0 0 10px gray;
-  aspect-ratio: 1/1; /* square */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  font-weight: bold;
-  padding: 10px;
+  background:#222;
+  color:white;
+  text-align:center;
+  padding:10px;
 }
 </style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
 
 <body>
 
-<header>
-  <h1>Arman CSC Center</h1>
-  <p>All Digital Services Available</p>
-</header>
-
 <nav>
-  <a href="#">Home</a>
-  <a href="#services">Services</a>
-  <a href="#contact">Contact</a>
+  <a href="index.html">Home</a>
+  <a href="login.html">Login</a>
 </nav>
 
-<section class="hero">
-  <h2>Welcome to CSC Center</h2>
-  <p>Aadhaar | PAN | Bill Payment | Online Services</p>
-</section>
+<h1 style="text-align:center;">Arman CSC Center</h1>
 
-<section class="services" id="services">
-  <h2>Our Services</h2>
+<!-- 🔍 SEARCH BAR -->
+<input type="text" id="search" placeholder="Search service..." onkeyup="searchService()">
 
-  <a href="https://uidai.gov.in/" target="_blank">
-  <div class="service-box">🆔 Aadhaar Update</div>
-</a>
-  <a href="https://www.incometexdepartment.com/" target="_blank">
-  <div class="service-box">💳 PAN Card Apply</div>
-</a>
- <a href="https://www.paytm.com/electricity-bill-payment" target="_blank">
-  <div class="service-box">⚡ Electricity Bill Payment</div>
-</a>
- <a href="https://www.sarkariresult.com/" target="_blank">
-  <div class="service-box">📄 Online Form / Result Check</div>
+<!-- 🔗 SERVICES -->
+<div class="services" id="services">
+
+<a href="https://uidai.gov.in/" target="_blank">
+<div class="service-box">🆔 Aadhaar</div>
 </a>
 
-<a href="https://edistrict.up.gov.in/" target="_blank">
-  <div class="service-box">🧾 UP Certificate Services</div>
+<a href="https://www.onlineservices.nsdl.com/" target="_blank">
+<div class="service-box">💳 PAN Card</div>
 </a>
 
 <a href="https://voterportal.eci.gov.in/" target="_blank">
-  <div class="service-box">🗳️ Voter ID Apply / Correction</div>
+<div class="service-box">🗳️ Voter ID</div>
 </a>
 
 <a href="https://www.passportindia.gov.in/" target="_blank">
-  <div class="service-box">🛂 Passport Apply</div>
+<div class="service-box">🛂 Passport</div>
 </a>
 
 <a href="https://pmjay.gov.in/" target="_blank">
-  <div class="service-box">🏥 Ayushman Card Apply</div>
+<div class="service-box">🏥 Ayushman</div>
 </a>
 
 <a href="https://www.onlinesbi.sbi/" target="_blank">
-  <div class="service-box">🏦 Bank Account Opening</div>
+<div class="service-box">🏦 Bank Account</div>
 </a>
 
-<section id="contact" style="padding:20px;">
-  <h2>Contact Us</h2>
-  <p>📞 Phone: 9759249973</p>
-  <p>📍 Location: Your Village Name</p>
+</div>
+
+<!-- 📞 CONTACT -->
+<section>
+<h2>Contact Us</h2>
+<p>📞 9759249973</p>
 </section>
+
+<!-- 🧾 FORM -->
 <h2>Apply Online</h2>
 
 <form>
-  <input type="text" placeholder="Your Name" required><br><br>
-  <input type="tel" placeholder="Mobile Number" required><br><br>
-  <textarea placeholder="Your Work (Aadhaar, PAN etc)"></textarea><br><br>
-  <button type="submit">Submit</button>
+<input type="text" placeholder="Your Name"><br><br>
+<input type="text" placeholder="Mobile Number"><br><br>
+<textarea placeholder="Your Work"></textarea><br><br>
+<button>Submit</button>
 </form>
+
 <footer>
-  <p>© 2026 Arman CSC Center</p>
+© 2026 Arman CSC Center
 </footer>
 
-<a href="https://wa.me/919759249973" target="_blank" 
-style="position:fixed; bottom:20px; right:20px; 
-background:#25D366; color:white; padding:15px; 
-border-radius:50%; text-decoration:none; font-size:20px;">
+<!-- 💬 WHATSAPP -->
+<a href="https://wa.me/919759249973" target="_blank"
+style="position:fixed; bottom:20px; right:20px; background:#25D366; color:white; padding:15px; border-radius:50%;">
 💬
 </a>
-  </body>
+
+<!-- 🔍 SEARCH SCRIPT -->
+<script>
+function searchService() {
+  let input = document.getElementById("search").value.toLowerCase();
+  let boxes = document.getElementsByClassName("service-box");
+
+  for (let i = 0; i < boxes.length; i++) {
+    let text = boxes[i].innerText.toLowerCase();
+    boxes[i].parentElement.style.display =
+      text.includes(input) ? "block" : "none";
+  }
+}
+</script>
+
+</body>
 </html>

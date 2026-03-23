@@ -1,16 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login</title>
+</head>
+
+<body style="text-align:center; font-family:Arial;">
+
+<h2>Login</h2>
+
+<input id="user" placeholder="Username"><br><br>
+<input id="pass" type="password" placeholder="Password"><br><br>
+
+<button onclick="login()">Login</button>
+
+<script>
 function login(){
-  let u = document.getElementById("loginUser").value;
-  let p = document.getElementById("loginPass").value;
-
-  let savedUser = localStorage.getItem("user");
-  let savedPass = localStorage.getItem("pass");
-
-  if(
-    (u === savedUser && p === savedPass) || 
-    (u === "admin" && p === "1234")
-  ){
+  if(user.value=="admin" && pass.value=="1234"){
     window.location="dashboard.html";
   } else {
-    alert("Wrong Login ?");
+    alert("Wrong Login");
   }
 }
+</script>
+
+</body>
+</html>

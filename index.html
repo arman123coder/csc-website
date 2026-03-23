@@ -11,7 +11,6 @@ body {
   background:#f5f7fa;
 }
 
-/* NAVBAR */
 nav {
   background:#0d6efd;
   padding:15px;
@@ -24,7 +23,6 @@ nav a {
   font-weight:bold;
 }
 
-/* SEARCH */
 #search {
   width:80%;
   padding:10px;
@@ -33,7 +31,6 @@ nav a {
   border:1px solid #ccc;
 }
 
-/* GRID */
 .services {
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
@@ -41,7 +38,6 @@ nav a {
   padding:20px;
 }
 
-/* BOX */
 .service-box {
   background:linear-gradient(135deg,#e3f2fd,#ffffff);
   border-radius:12px;
@@ -61,19 +57,6 @@ nav a {
   color:white;
 }
 
-/* CONTACT + FORM */
-section, form {
-  text-align:center;
-}
-
-button {
-  padding:10px 15px;
-  background:#0d6efd;
-  color:white;
-  border:none;
-  border-radius:6px;
-}
-
 footer {
   background:#222;
   color:white;
@@ -81,7 +64,6 @@ footer {
   padding:10px;
 }
 </style>
-
 </head>
 
 <body>
@@ -93,65 +75,40 @@ footer {
 
 <h1 style="text-align:center;">Arman CSC Center</h1>
 
-<!-- ?? SEARCH BAR -->
 <input type="text" id="search" placeholder="Search service..." onkeyup="searchService()">
 
-<!-- ?? SERVICES -->
-<div class="services" id="services">
+<div class="services">
 
 <a href="https://uidai.gov.in/" target="_blank">
-<div class="service-box">?? Aadhaar</div>
+<div class="service-box">Aadhaar</div>
 </a>
 
 <a href="https://www.onlineservices.nsdl.com/" target="_blank">
-<div class="service-box">?? PAN Card</div>
+<div class="service-box">PAN Card</div>
 </a>
 
 <a href="https://voterportal.eci.gov.in/" target="_blank">
-<div class="service-box">??? Voter ID</div>
+<div class="service-box">Voter ID</div>
 </a>
 
 <a href="https://www.passportindia.gov.in/" target="_blank">
-<div class="service-box">?? Passport</div>
+<div class="service-box">Passport</div>
 </a>
 
 <a href="https://pmjay.gov.in/" target="_blank">
-<div class="service-box">?? Ayushman</div>
+<div class="service-box">Ayushman</div>
 </a>
 
 <a href="https://www.onlinesbi.sbi/" target="_blank">
-<div class="service-box">?? Bank Account</div>
+<div class="service-box">Bank Account</div>
 </a>
 
 </div>
-
-<!-- ?? CONTACT -->
-<section>
-<h2>Contact Us</h2>
-<p>?? 9759249973</p>
-</section>
-
-<!-- ?? FORM -->
-<h2>Apply Online</h2>
-
-<form>
-<input type="text" placeholder="Your Name"><br><br>
-<input type="text" placeholder="Mobile Number"><br><br>
-<textarea placeholder="Your Work"></textarea><br><br>
-<button>Submit</button>
-</form>
 
 <footer>
 © 2026 Arman CSC Center
 </footer>
 
-<!-- ?? WHATSAPP -->
-<a href="https://wa.me/919759249973" target="_blank"
-style="position:fixed; bottom:20px; right:20px; background:#25D366; color:white; padding:15px; border-radius:50%;">
-??
-</a>
-
-<!-- ?? SEARCH SCRIPT -->
 <script>
 function searchService() {
   let input = document.getElementById("search").value.toLowerCase();

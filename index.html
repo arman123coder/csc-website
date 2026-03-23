@@ -8,22 +8,9 @@
 
 <h2>Login</h2>
 
-function login(){
-  let u = document.getElementById("loginUser").value;
-  let p = document.getElementById("loginPass").value;
+<input id="user" placeholder="Username"><br><br>
+<input id="pass" type="password" placeholder="Password"><br><br>
 
-  let savedUser = localStorage.getItem("user");
-  let savedPass = localStorage.getItem("pass");
-
-  if(
-    (u === savedUser && p === savedPass) || 
-    (u === "admin" && p === "1234")
-  ){
-    window.location="dashboard.html";
-  } else {
-    alert("Wrong Login ?");
-  }
-}
 <button onclick="login()">Login</button>
 
 <h3>OR</h3>

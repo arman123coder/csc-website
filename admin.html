@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin Panel</title>
+</head>
+
+<body>
+
+<h2>Add Service</h2>
+
+<input id="name" placeholder="Service Name"><br><br>
+<input id="link" placeholder="Service Link"><br><br>
+<input id="icon" placeholder="Icon (fa-name)"><br><br>
+
+<button onclick="addService()">Add Service</button>
+
+<h3>Saved Services</h3>
+<div id="list"></div>
+
+<script>
+let services = JSON.parse(localStorage.getItem("services")) || [];
+
+function show() {
+  let data = "";
+  services.forEach((s, i) => {
+    data += s.name + " <button onclick='del("+i+")'>Delete</button><br>";
+  });
+  document.getElementById("list").innerHTML = data;
+}
+
+function addService() {
+  let name = document.getElementById("name").value;
+  let link = document.getElementById("link").value;
+  let icon = document.getElementById("icon").value;
+
+  services.push({name, link, icon});
+  localStorage.setItem("services", JSON.stringify(services));
+
+  show();
+}
+
+function del(i) {
+  services.splice(i,1);
+  localStorage.setItem("services", JSON.stringify(services));
+  show();
+}
+
+show();
+</script>
+
+</body>
+</html>

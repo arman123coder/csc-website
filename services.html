@@ -69,105 +69,27 @@ header {
 <header>Our Services</header>
 
 <div class="container">
-<div class="service-grid">
-
-<!-- Govt Services -->
-<div class="card">
-<i class="fas fa-file-alt"></i>
-<h3>Sarkari Result</h3>
-<a href="https://www.sarkariresult.com" target="_blank" class="btn">Open</a>
+  <!-- yaha services auto load hongi -->
+  <div class="service-grid" id="box"></div>
 </div>
 
-<div class="card">
-<i class="fas fa-id-card"></i>
-<h3>PAN Card</h3>
-<a href="https://www.incometax.gov.in" target="_blank" class="btn">Open</a>
-</div>
+<script>
+// localStorage se data uthao
+let services = JSON.parse(localStorage.getItem("services")) || [];
 
-<div class="card">
-<i class="fas fa-address-card"></i>
-<h3>Aadhar Card</h3>
-<a href="https://uidai.gov.in" target="_blank" class="btn">Open</a>
-</div>
+let box = document.getElementById("box");
 
-<div class="card">
-<i class="fas fa-user-graduate"></i>
-<h3>APAAR Student ID</h3>
-<a href="https://apaar.education.gov.in" target="_blank" class="btn">Open</a>
-</div>
-
-<div class="card">
-<i class="fas fa-heartbeat"></i>
-<h3>ABHA Health Card</h3>
-<a href="https://abdm.gov.in" target="_blank" class="btn">Open</a>
-</div>
-
-<div class="card">
-<i class="fas fa-graduation-cap"></i>
-<h3>Scholarship</h3>
-<a href="https://scholarship.up.gov.in" target="_blank" class="btn">Open</a>
-</div>
-
-<!-- Travel -->
-<div class="card">
-<i class="fas fa-train"></i>
-<h3>Railway Ticket</h3>
-<a href="https://www.irctc.co.in" target="_blank" class="btn">Open</a>
-</div>
-
-<!-- Banking -->
-<div class="card">
-<i class="fas fa-university"></i>
-<h3>SBI Account</h3>
-<a href="https://onlinesbi.sbi" target="_blank" class="btn">Open</a>
-</div>
-
-<div class="card">
-<i class="fas fa-money-check-alt"></i>
-<h3>PM Jan Dhan Yojana</h3>
-<a href="https://pmjdy.gov.in" target="_blank" class="btn">Open</a>
-</div>
-
-<div class="card">
-<i class="fas fa-credit-card"></i>
-<h3>ATM / Debit Card Services</h3>
-<a href="https://www.npci.org.in" target="_blank" class="btn">Open</a>
-</div>
-
-<!-- Utility -->
-<div class="card">
-<i class="fas fa-bolt"></i>
-<h3>Electricity Bill</h3>
-<a href="https://www.uppclonline.com" target="_blank" class="btn">Open</a>
-</div>
-
-<div class="card">
-<i class="fas fa-mobile-alt"></i>
-<h3>Mobile Recharge</h3>
-<a href="https://www.paytm.com" target="_blank" class="btn">Open</a>
-</div>
-
-<div class="card">
-<i class="fas fa-gas-pump"></i>
-<h3>Gas Booking</h3>
-<a href="https://cx.indianoil.in" target="_blank" class="btn">Open</a>
-</div>
-
-<!-- Documents -->
-<div class="card">
-<i class="fas fa-file-upload"></i>
-<h3>DigiLocker</h3>
-<a href="https://www.digilocker.gov.in" target="_blank" class="btn">Open</a>
-</div>
-
-<div class="card">
-<i class="fas fa-car"></i>
-<h3>Driving License</h3>
-<a href="https://parivahan.gov.in" target="_blank" class="btn">Open</a>
-</div>
-
-</div>
-</div>
+// loop chalao aur cards banao
+services.forEach(s => {
+  box.innerHTML += `
+  <div class="card">
+    <i class="fas ${s.icon}"></i>
+    <h3>${s.name}</h3>
+    <a href="${s.link}" target="_blank" class="btn">Open</a>
+  </div>
+  `;
+});
+</script>
 
 </body>
 </html>

@@ -1,92 +1,103 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>CSC Services</title>
+    <meta charset="UTF-8">
+    <title>Services</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-body {
-  margin:0;
-  font-family:Arial;
-  background:#f5f1ff;
-}
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f5f6fa;
+        }
 
-.sidebar {
-  width:230px;
-  height:100vh;
-  background:linear-gradient(180deg,#4b1a8c,#2a1f4d);
-  position:fixed;
-  color:white;
-  padding-top:20px;
-}
+        header {
+            background: #5a2ca0;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 22px;
+        }
 
-.sidebar h2 { text-align:center; }
-.sidebar a {
-  display:block;
-  padding:15px;
-  color:white;
-  text-decoration:none;
-  font-size:18px;
-}
-.sidebar a:hover { background:rgba(255,255,255,0.2); }
+        .container {
+            padding: 20px;
+        }
 
-.content {
-  margin-left:250px;
-  padding:30px;
-}
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
 
-.grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
-  gap:20px;
-}
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: 0.3s;
+            cursor: pointer;
+        }
 
-.card {
-  background:white;
-  padding:20px;
-  border-radius:15px;
-  box-shadow:0 0 12px rgba(0,0,0,0.2);
-  text-align:center;
-  font-size:18px;
-}
+        .card:hover {
+            transform: translateY(-5px);
+        }
 
-.card a {
-  text-decoration:none;
-  color:#4b1a8c;
-  font-weight:bold;
-}
+        .card h3 {
+            margin: 10px 0;
+        }
 
-</style>
-
+        .btn {
+            margin-top: 10px;
+            display: inline-block;
+            padding: 8px 15px;
+            background: #5a2ca0;
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+    </style>
 </head>
-
 <body>
 
-<div class="sidebar">
-  <h2>Services</h2>
-  <a href="dashboard.html">?? Dashboard</a>
-  <a href="services.html">?? Services</a>
-  <a href="settings.html">? Settings</a>
-  <a href="index.html">?? Logout</a>
-</div>
+<header>
+    Our Services
+</header>
 
-<div class="content">
-  <h1>All CSC Services</h1>
+<div class="container">
 
-  <div class="grid">
+    <div class="service-grid">
 
-    <div class="card"><a href="https://resident.uidai.gov.in/">Aadhaar Services</a></div>
+        <!-- Sarkari Result -->
+        <div class="card">
+            <h3>Sarkari Result</h3>
+            <p>Check latest govt jobs & results</p>
+            <a href="https://www.sarkariresult.com" target="_blank" class="btn">Open</a>
+        </div>
 
-    <div class="card"><a href="https://pan.utiitsl.com">PAN Card Apply</a></div>
+        <!-- Udyam Registration -->
+        <div class="card">
+            <h3>Udyam Registration</h3>
+            <p>MSME registration online</p>
+            <a href="https://udyamregistration.gov.in" target="_blank" class="btn">Open</a>
+        </div>
 
-    <div class="card"><a href="https://voters.eci.gov.in">Voter ID Apply</a></div>
+        <!-- PAN Card -->
+        <div class="card">
+            <h3>PAN Card Apply</h3>
+            <p>Apply for new PAN card</p>
+            <a href="https://www.onlineservices.nsdl.com" target="_blank" class="btn">Open</a>
+        </div>
 
-    <div class="card"><a href="https://mera.pmjay.gov.in">Ayushman Card</a></div>
+        <!-- Add more services here -->
+        <div class="card">
+            <h3>Aadhar Services</h3>
+            <p>Update & download Aadhar</p>
+            <a href="https://uidai.gov.in" target="_blank" class="btn">Open</a>
+        </div>
 
-    <div class="card"><a href="https://www.onlinesbi.sbi">Bank Account Opening</a></div>
-
-    <div class="card"><a href="https://parivahan.gov.in">Driving Licence</a></div>
-
-  </div>
+    </div>
 
 </div>
 

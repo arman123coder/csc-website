@@ -1,23 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Services</title>
+<title>CSC Services</title>
+
 <style>
-body { font-family: Arial; background:#f7f7ff; margin:0; }
-.header { background:#6a1b9a; padding:15px; color:white; font-size:22px; }
-.container { padding:20px; }
-.service-box { background:white; padding:15px; margin:10px 0; border-radius:10px; border-left:5px solid #6a1b9a; }
+body {
+  margin:0;
+  font-family:Arial;
+  background:#f5f1ff;
+}
+
+.sidebar {
+  width:230px;
+  height:100vh;
+  background:linear-gradient(180deg,#4b1a8c,#2a1f4d);
+  position:fixed;
+  color:white;
+  padding-top:20px;
+}
+
+.sidebar h2 { text-align:center; }
+.sidebar a {
+  display:block;
+  padding:15px;
+  color:white;
+  text-decoration:none;
+  font-size:18px;
+}
+.sidebar a:hover { background:rgba(255,255,255,0.2); }
+
+.content {
+  margin-left:250px;
+  padding:30px;
+}
+
+.grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+  gap:20px;
+}
+
+.card {
+  background:white;
+  padding:20px;
+  border-radius:15px;
+  box-shadow:0 0 12px rgba(0,0,0,0.2);
+  text-align:center;
+  font-size:18px;
+}
+
+.card a {
+  text-decoration:none;
+  color:#4b1a8c;
+  font-weight:bold;
+}
+
 </style>
+
 </head>
+
 <body>
 
-<div class="header">Our Services</div>
+<div class="sidebar">
+  <h2>Services</h2>
+  <a href="dashboard.html">?? Dashboard</a>
+  <a href="services.html">?? Services</a>
+  <a href="settings.html">? Settings</a>
+  <a href="index.html">?? Logout</a>
+</div>
 
-<div class="container">
-    <div class="service-box">Service 1</div>
-    <div class="service-box">Service 2</div>
-    <div class="service-box">Service 3</div>
+<div class="content">
+  <h1>All CSC Services</h1>
+
+  <div class="grid">
+
+    <div class="card"><a href="https://resident.uidai.gov.in/">Aadhaar Services</a></div>
+
+    <div class="card"><a href="https://pan.utiitsl.com">PAN Card Apply</a></div>
+
+    <div class="card"><a href="https://voters.eci.gov.in">Voter ID Apply</a></div>
+
+    <div class="card"><a href="https://mera.pmjay.gov.in">Ayushman Card</a></div>
+
+    <div class="card"><a href="https://www.onlinesbi.sbi">Bank Account Opening</a></div>
+
+    <div class="card"><a href="https://parivahan.gov.in">Driving Licence</a></div>
+
+  </div>
+
 </div>
 
 </body>

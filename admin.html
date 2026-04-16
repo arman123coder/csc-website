@@ -2,30 +2,132 @@
 <html>
 <head>
 <title>Admin Panel</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+body {
+  margin:0;
+  font-family:Arial;
+  background:#f3f0ff;
+}
+
+/* Header */
+header {
+  background:#5a2ca0;
+  color:white;
+  padding:15px;
+  text-align:center;
+  font-size:22px;
+}
+
+/* Container */
+.container {
+  max-width:900px;
+  margin:auto;
+  padding:20px;
+}
+
+/* Form Card */
+.form-box {
+  background:white;
+  padding:20px;
+  border-radius:15px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.1);
+  margin-bottom:20px;
+}
+
+input {
+  width:100%;
+  padding:10px;
+  margin:10px 0;
+  border-radius:8px;
+  border:1px solid #ccc;
+}
+
+button {
+  padding:10px 20px;
+  background:#5a2ca0;
+  color:white;
+  border:none;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+button:hover {
+  background:#3d1c70;
+}
+
+/* Service List */
+.list {
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:15px;
+}
+
+.card {
+  background:white;
+  padding:15px;
+  border-radius:12px;
+  box-shadow:0 3px 10px rgba(0,0,0,0.1);
+  text-align:center;
+}
+
+.card i {
+  font-size:25px;
+  color:#5a2ca0;
+}
+
+.delete-btn {
+  margin-top:10px;
+  background:red;
+  padding:5px 10px;
+  border:none;
+  color:white;
+  border-radius:6px;
+  cursor:pointer;
+}
+</style>
+
 </head>
 
 <body>
 
-<h2>Add Service</h2>
+<header>Admin Panel</header>
 
-<input id="name" placeholder="Service Name"><br><br>
-<input id="link" placeholder="Service Link"><br><br>
-<input id="icon" placeholder="Icon (fa-name)"><br><br>
+<div class="container">
 
-<button onclick="addService()">Add Service</button>
+  <!-- Add Service -->
+  <div class="form-box">
+    <h3>Add New Service</h3>
+    <input id="name" placeholder="Service Name">
+    <input id="link" placeholder="Service Link (https://...)">
+    <input id="icon" placeholder="Icon (fa-name)">
+    <button onclick="addService()">Add Service</button>
+  </div>
 
-<h3>Saved Services</h3>
-<div id="list"></div>
+  <!-- Service List -->
+  <h3>All Services</h3>
+  <div class="list" id="list"></div>
+
+</div>
 
 <script>
 let services = JSON.parse(localStorage.getItem("services")) || [];
 
 function show() {
-  let data = "";
+  let list = document.getElementById("list");
+  list.innerHTML = "";
+
   services.forEach((s, i) => {
-    data += s.name + " <button onclick='del("+i+")'>Delete</button><br>";
+    list.innerHTML += `
+      <div class="card">
+        <i class="fas ${s.icon}"></i>
+        <h4>${s.name}</h4>
+        <button class="delete-btn" onclick="del(${i})">Delete</button>
+      </div>
+    `;
   });
-  document.getElementById("list").innerHTML = data;
 }
 
 function addService() {
@@ -33,8 +135,17 @@ function addService() {
   let link = document.getElementById("link").value;
   let icon = document.getElementById("icon").value;
 
+  if(name=="" || link=="" || icon==""){
+    alert("Please fill all fields");
+    return;
+  }
+
   services.push({name, link, icon});
   localStorage.setItem("services", JSON.stringify(services));
+
+  document.getElementById("name").value="";
+  document.getElementById("link").value="";
+  document.getElementById("icon").value="";
 
   show();
 }

@@ -1,104 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Services</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Services</title>
 
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background: #f5f6fa;
-        }
+<style>
+body {
+  margin:0;
+  font-family:Arial;
+  background:#f5f6fa;
+}
 
-        header {
-            background: #5a2ca0;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            font-size: 22px;
-        }
+header {
+  background:#5a2ca0;
+  color:white;
+  padding:15px;
+  text-align:center;
+  font-size:22px;
+}
 
-        .container {
-            padding: 20px;
-        }
+.container {
+  padding:20px;
+}
 
-        .service-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-        }
+.service-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
+  gap:20px;
+}
 
-        .card {
-            background: white;
-            padding: 20px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            transition: 0.3s;
-            cursor: pointer;
-        }
+.card {
+  background:white;
+  padding:20px;
+  border-radius:12px;
+  text-align:center;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+  transition:0.3s;
+}
 
-        .card:hover {
-            transform: translateY(-5px);
-        }
+.card:hover {
+  transform:translateY(-5px);
+}
 
-        .card h3 {
-            margin: 10px 0;
-        }
+.btn {
+  margin-top:10px;
+  display:inline-block;
+  padding:8px 15px;
+  background:#5a2ca0;
+  color:white;
+  border-radius:6px;
+  text-decoration:none;
+}
+</style>
 
-        .btn {
-            margin-top: 10px;
-            display: inline-block;
-            padding: 8px 15px;
-            background: #5a2ca0;
-            color: white;
-            border-radius: 6px;
-            text-decoration: none;
-        }
-    </style>
 </head>
+
 <body>
 
-<header>
-    Our Services
-</header>
+<header>Our Services</header>
 
 <div class="container">
+<div class="service-grid">
 
-    <div class="service-grid">
+<div class="card">
+<h3>Sarkari Result</h3>
+<a href="https://www.sarkariresult.com" target="_blank" class="btn">Open</a>
+</div>
 
-        <!-- Sarkari Result -->
-        <div class="card">
-            <h3>Sarkari Result</h3>
-            <p>Check latest govt jobs & results</p>
-            <a href="https://www.sarkariresult.com" target="_blank" class="btn">Open</a>
-        </div>
+<div class="card">
+<h3>PAN Card</h3>
+<a href="#" class="btn">Open</a>
+</div>
 
-        <!-- Udyam Registration -->
-        <div class="card">
-            <h3>Udyam Registration</h3>
-            <p>MSME registration online</p>
-            <a href="https://udyamregistration.gov.in" target="_blank" class="btn">Open</a>
-        </div>
+<div class="card">
+<h3>Aadhar ID</h3>
+<a href="#" class="btn">Open</a>
+</div>
 
-        <!-- PAN Card -->
-        <div class="card">
-            <h3>PAN Card Apply</h3>
-            <p>Apply for new PAN card</p>
-            <a href="https://www.onlineservices.nsdl.com" target="_blank" class="btn">Open</a>
-        </div>
+<div class="card">
+<h3>Railway Ticket</h3>
+<a href="#" class="btn">Open</a>
+</div>
 
-        <!-- Add more services here -->
-        <div class="card">
-            <h3>Aadhar Services</h3>
-            <p>Update & download Aadhar</p>
-            <a href="https://uidai.gov.in" target="_blank" class="btn">Open</a>
-        </div>
+<div class="card">
+<h3>Account Opening</h3>
+<a href="#" class="btn">Open</a>
+</div>
 
-    </div>
+<div class="card">
+<h3>Scholarship</h3>
+<a href="#" class="btn">Open</a>
+</div>
 
+</div>
 </div>
 
 </body>

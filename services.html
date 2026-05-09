@@ -2,121 +2,94 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>CSC Services</title>
+<title>Services</title>
+
+<!-- ICON CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
-body{
+body {
   margin:0;
   font-family:Arial;
-  background:#f4f0ff;
+  background:#f5f6fa;
 }
 
-.sidebar{
-  position:fixed;
-  width:230px;
-  height:100vh;
-  background:linear-gradient(180deg,#5a1bab,#2d0e5e);
-  padding-top:20px;
-}
-
-.sidebar a{
-  display:block;
+header {
+  background:#5a2ca0;
   color:white;
   padding:15px;
-  text-decoration:none;
-  font-size:18px;
+  text-align:center;
+  font-size:22px;
 }
 
-.sidebar a:hover{
-  background:rgba(255,255,255,0.2);
+.container {
+  padding:20px;
 }
 
-.content{
-  margin-left:250px;
-  padding:30px;
-}
-
-h1{
-  color:#5a1bab;
-}
-
-.grid{
+.service-grid {
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
   gap:20px;
 }
 
-.card{
+.card {
   background:white;
   padding:20px;
-  border-radius:15px;
-  box-shadow:0 0 10px rgba(0,0,0,0.2);
+  border-radius:12px;
   text-align:center;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+  transition:0.3s;
 }
 
-.card a{
+.card:hover {
+  transform:translateY(-5px);
+}
+
+.card i {
+  font-size:35px;
+  color:#5a2ca0;
+  margin-bottom:10px;
+}
+
+.btn {
+  margin-top:10px;
+  display:inline-block;
+  padding:8px 15px;
+  background:#ff0000;
+  color:white;
+  border-radius:6px;
   text-decoration:none;
-  color:#5a1bab;
-  font-size:20px;
-  font-weight:bold;
 }
 </style>
+
 </head>
 
 <body>
 
-<div class="sidebar">
-  <a href="dashboard.html">📊 Dashboard</a>
-  <a href="service.html">🧾 Services</a>
-  <a href="setting.html">⚙ Settings</a>
-  <a href="index.html">🚪 Logout</a>
+<header>Our Services</header>
+
+<div class="container">
+  <!-- yaha services auto load hongi -->
+  <div class="service-grid" id="box"></div>
 </div>
 
-<div class="content">
+<script>
+// localStorage se data uthao
+let services = JSON.parse(localStorage.getItem("services")) || [];
 
-<h1>CSC Services</h1>
+let box = document.getElementById("box");
 
-<div class="grid">
-
-<div class="card">
-<a href="https://resident.uidai.gov.in/" target="_blank">
-Aadhaar Services
-</a>
-</div>
-
-<div class="card">
-<a href="https://pan.utiitsl.com/" target="_blank">
-PAN Card Apply
-</a>
-</div>
-
-<div class="card">
-<a href="https://voters.eci.gov.in/" target="_blank">
-Voter ID Apply
-</a>
-</div>
-
-<div class="card">
-<a href="https://mera.pmjay.gov.in/" target="_blank">
-Ayushman Card
-</a>
-</div>
-
-<div class="card">
-<a href="https://www.onlinesbi.sbi/" target="_blank">
-Bank Account Opening
-</a>
-</div>
-
-<div class="card">
-<a href="https://parivahan.gov.in/" target="_blank">
-Driving Licence
-</a>
-</div>
-
-</div>
-
-</div>
+// loop chalao aur cards banao
+services.forEach(s => {
+  box.innerHTML += `
+  <div class="card">
+    <i class="fas ${s.icon}"></i>
+    <h3>${s.name}</h3>
+    <a href="${s.link}" target="_blank" class="btn">Open</a>
+  </div>
+  `;
+});
+</script>
 
 </body>
 </html>

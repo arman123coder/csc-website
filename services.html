@@ -2,93 +2,124 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Services</title>
+<title>CSC Services</title>
 
-<!-- ICON CDN -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
-body {
-  margin:0;
-  font-family:Arial;
-  background:#f5f6fa;
+
+body{
+margin:0;
+font-family:Arial;
+background:#f4f0ff;
 }
 
-header {
-  background:#5a2ca0;
-  color:white;
-  padding:15px;
-  text-align:center;
-  font-size:22px;
+header{
+background:#5a2ca0;
+padding:20px;
+color:white;
+text-align:center;
+font-size:28px;
 }
 
-.container {
-  padding:20px;
+.container{
+padding:30px;
 }
 
-.service-grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(220px,1fr));
-  gap:20px;
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
 }
 
-.card {
-  background:white;
-  padding:20px;
-  border-radius:12px;
-  text-align:center;
-  box-shadow:0 4px 10px rgba(0,0,0,0.1);
-  transition:0.3s;
+.card{
+background:white;
+padding:20px;
+border-radius:15px;
+text-align:center;
+box-shadow:0 0 10px rgba(0,0,0,0.2);
 }
 
-.card:hover {
-  transform:translateY(-5px);
+.card i{
+font-size:40px;
+color:#5a2ca0;
+margin-bottom:10px;
 }
 
-.card i {
-  font-size:35px;
-  color:#5a2ca0;
-  margin-bottom:10px;
+.btn{
+display:inline-block;
+padding:10px 15px;
+background:#7f00ff;
+color:white;
+text-decoration:none;
+border-radius:10px;
+margin-top:10px;
 }
 
-.btn {
-  margin-top:10px;
-  display:inline-block;
-  padding:8px 15px;
-  background:#ff0000;
-  color:white;
-  border-radius:6px;
-  text-decoration:none;
-}
 </style>
-
 </head>
 
 <body>
 
-<header>Our Services</header>
+<header>🚀 CSC Services Portal</header>
 
 <div class="container">
-  <!-- yaha services auto load hongi -->
-  <div class="service-grid" id="box"></div>
+
+<div class="grid" id="services"></div>
+
 </div>
 
-<script>
-// localStorage se data uthao
-let services = JSON.parse(localStorage.getItem("services")) || [];
+<script type="module">
 
-let box = document.getElementById("box");
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
-// loop chalao aur cards banao
-services.forEach(s => {
-  box.innerHTML += `
-  <div class="card">
-    <i class="fas ${s.icon}"></i>
-    <h3>${s.name}</h3>
-    <a href="${s.link}" target="_blank" class="btn">Open</a>
-  </div>
-  `;
+import {
+getFirestore,
+collection,
+onSnapshot
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+const firebaseConfig = {
+apiKey: "AIzaSyC3gCB30NjBxacLSoTNITQHTX0uh1TmE68",
+authDomain: "csc-portal-13426.firebaseapp.com",
+projectId: "csc-portal-13426",
+storageBucket: "csc-portal-13426.firebasestorage.app",
+messagingSenderId: "928212810654",
+appId: "1:928212810654:web:7dd04da7e95787ea05748f"
+};
+
+const app = initializeApp(firebaseConfig);
+
+const db=getFirestore(app);
+
+const services=document.getElementById("services");
+
+onSnapshot(collection(db,"services"),(snapshot)=>{
+
+services.innerHTML="";
+
+snapshot.forEach((d)=>{
+
+let s=d.data();
+
+services.innerHTML += `
+<div class="card">
+
+<i class="fas ${s.icon}"></i>
+
+<h3>${s.name}</h3>
+
+<a href="${s.link}" target="_blank" class="btn">
+Open
+</a>
+
+</div>
+`;
+
 });
+
+});
+
 </script>
 
 </body>

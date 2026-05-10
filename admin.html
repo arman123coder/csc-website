@@ -2,235 +2,174 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Premium Admin Panel</title>
+<title>Firebase Admin Panel</title>
 
-<!-- FONT AWESOME -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 <style>
-
 body{
-  margin:0;
-  font-family:Arial;
-  background:linear-gradient(135deg,#1f1c2c,#928DAB);
-  min-height:100vh;
-  color:white;
+margin:0;
+font-family:Arial;
+background:linear-gradient(135deg,#1f1c2c,#928DAB);
+color:white;
 }
 
-/* HEADER */
 header{
-  background:rgba(255,255,255,0.1);
-  backdrop-filter:blur(10px);
-  padding:20px;
-  text-align:center;
-  font-size:28px;
-  font-weight:bold;
-  box-shadow:0 4px 15px rgba(0,0,0,0.2);
+padding:20px;
+text-align:center;
+font-size:28px;
+background:#5a2ca0;
 }
 
-/* MAIN CONTAINER */
 .container{
-  width:90%;
-  max-width:1100px;
-  margin:30px auto;
+width:90%;
+margin:auto;
+padding:20px;
 }
 
-/* FORM BOX */
 .form-box{
-  background:rgba(255,255,255,0.12);
-  backdrop-filter:blur(12px);
-  padding:25px;
-  border-radius:20px;
-  box-shadow:0 6px 20px rgba(0,0,0,0.25);
-  margin-bottom:30px;
+background:rgba(255,255,255,0.12);
+padding:20px;
+border-radius:15px;
+margin-bottom:20px;
 }
 
-.form-box h2{
-  margin-top:0;
-  color:#fff;
-}
-
-/* INPUT */
 input{
-  width:100%;
-  padding:14px;
-  margin:12px 0;
-  border:none;
-  border-radius:12px;
-  outline:none;
-  font-size:16px;
+width:100%;
+padding:12px;
+margin:10px 0;
+border:none;
+border-radius:10px;
 }
 
-/* BUTTON */
 button{
-  background:linear-gradient(135deg,#7f00ff,#9d4edd);
-  color:white;
-  border:none;
-  padding:14px 20px;
-  border-radius:12px;
-  cursor:pointer;
-  font-size:16px;
-  transition:0.3s;
+padding:12px 20px;
+background:#7f00ff;
+color:white;
+border:none;
+border-radius:10px;
+cursor:pointer;
 }
 
-button:hover{
-  transform:scale(1.03);
-  background:linear-gradient(135deg,#9d4edd,#c77dff);
-}
-
-/* SERVICE GRID */
 .list{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:20px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
 }
 
-/* CARD */
 .card{
-  background:rgba(255,255,255,0.12);
-  backdrop-filter:blur(10px);
-  padding:20px;
-  border-radius:18px;
-  text-align:center;
-  box-shadow:0 6px 20px rgba(0,0,0,0.2);
-  transition:0.3s;
+background:white;
+color:black;
+padding:20px;
+border-radius:15px;
+text-align:center;
 }
 
-.card:hover{
-  transform:translateY(-5px);
-}
-
-.card i{
-  font-size:40px;
-  margin-bottom:12px;
-  color:#fff;
-}
-
-.card h3{
-  margin:10px 0;
-}
-
-/* DELETE BUTTON */
 .delete-btn{
-  background:#ff4d6d;
-  margin-top:12px;
+background:red;
+margin-top:10px;
 }
-
-.delete-btn:hover{
-  background:#ff758f;
-}
-
 </style>
 </head>
 
 <body>
 
-<header>
-⚡ Premium Admin Panel
-</header>
+<header>🔥 Firebase Admin Panel</header>
 
 <div class="container">
 
-<!-- FORM -->
 <div class="form-box">
 
-<h2>Add New Service</h2>
+<input id="name" placeholder="Service Name">
 
-<input id="name" type="text" placeholder="Service Name">
+<input id="link" placeholder="Service Link">
 
-<input id="link" type="text" placeholder="https://example.com">
+<input id="icon" placeholder="fa-id-card">
 
-<input id="icon" type="text" placeholder="Font Awesome Icon Example: fa-id-card">
-
-<button onclick="addService()">➕ Add Service</button>
+<button onclick="addService()">Add Service</button>
 
 </div>
-
-<!-- SERVICES -->
-<h2>All Services</h2>
 
 <div class="list" id="list"></div>
 
 </div>
 
-<script>
+<script type="module">
 
-let services = JSON.parse(localStorage.getItem("services")) || [];
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
-/* SHOW SERVICES */
-function show(){
+import {
+getFirestore,
+collection,
+addDoc,
+onSnapshot,
+deleteDoc,
+doc
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-  let list = document.getElementById("list");
+const firebaseConfig = {
+apiKey: "AIzaSyC3gCB30NjBxacLSoTNITQHTX0uh1TmE68",
+authDomain: "csc-portal-13426.firebaseapp.com",
+projectId: "csc-portal-13426",
+storageBucket: "csc-portal-13426.firebasestorage.app",
+messagingSenderId: "928212810654",
+appId: "1:928212810654:web:7dd04da7e95787ea05748f"
+};
 
-  list.innerHTML = "";
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 
-  services.forEach((s,i)=>{
+const list=document.getElementById("list");
 
-    list.innerHTML += `
-    
-    <div class="card">
+window.addService = async function(){
 
-      <i class="fas ${s.icon}"></i>
+let name=document.getElementById("name").value;
+let link=document.getElementById("link").value;
+let icon=document.getElementById("icon").value;
 
-      <h3>${s.name}</h3>
+await addDoc(collection(db,"services"),{
+name,
+link,
+icon
+});
 
-      <a href="${s.link}" target="_blank">
-        <button>🌐 Open</button>
-      </a>
-
-      <br>
-
-      <button class="delete-btn" onclick="del(${i})">
-      🗑 Delete
-      </button>
-
-    </div>
-
-    `;
-  });
-
-}
-
-/* ADD SERVICE */
-function addService(){
-
-  let name = document.getElementById("name").value;
-  let link = document.getElementById("link").value;
-  let icon = document.getElementById("icon").value;
-
-  if(name=="" || link=="" || icon==""){
-    alert("Please fill all fields");
-    return;
-  }
-
-  services.push({
-    name:name,
-    link:link,
-    icon:icon
-  });
-
-  localStorage.setItem("services", JSON.stringify(services));
-
-  document.getElementById("name").value="";
-  document.getElementById("link").value="";
-  document.getElementById("icon").value="";
-
-  show();
+alert("Service Added");
 
 }
 
-/* DELETE */
-function del(i){
+onSnapshot(collection(db,"services"),(snapshot)=>{
 
-  services.splice(i,1);
+list.innerHTML="";
 
-  localStorage.setItem("services", JSON.stringify(services));
+snapshot.forEach((d)=>{
 
-  show();
+let s=d.data();
 
+list.innerHTML += `
+<div class="card">
+<i class="fas ${s.icon}"></i>
+<h3>${s.name}</h3>
+
+<a href="${s.link}" target="_blank">
+<button>Open</button>
+</a>
+
+<br>
+
+<button class="delete-btn" onclick="delService('${d.id}')">
+Delete
+</button>
+
+</div>
+`;
+
+});
+
+});
+
+window.delService = async function(id){
+await deleteDoc(doc(db,"services",id));
 }
-
-show();
 
 </script>
 
